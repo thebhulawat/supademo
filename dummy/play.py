@@ -7,17 +7,20 @@ async def start():
         user_data_dir = os.path.expanduser('~/Library/Application Support/Google/Chrome')
         browser_type = p.chromium
         try:
-            browser = await browser_type.launch_persistent_context(
-                user_data_dir=user_data_dir,
+            browser = await browser_type.launch(
+                # user_data_dir=user_data_dir,
                 channel="chrome",
                 headless=False,
-                args=['--no-first-run', '--no-default-browser-check', '--disable-extensions'],
-                ignore_default_args=['--enable-automation']
+                # args=['--no-first-run', '--no-default-browser-check', '--disable-extensions'],
+                # ignore_default_args=['--enable-automation']
             )
             page = await browser.new_page()
-            await page.goto('https://instagram.com')
+            await page.goto('https://hubspot.com')
             print("Successfully opened the browser and navigated to instagram.com")
-            await asyncio.sleep(10)  # Keep the browser open for 10 seconds
+            
+            # Keep the browser running indefinitely
+            while True:
+                await asyncio.sleep(3600)  # Sleep for an hour and continue the loop
         except Exception as e:
             print(f"An error occurred: {e}")
         finally:

@@ -1,2 +1,4 @@
 .env
 ~/Library/*
+__pycache__
+.conda
