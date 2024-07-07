@@ -7,6 +7,7 @@ from langchain_core.runnables import chain as chain_decorator
 from langchain_core.messages import SystemMessage
 import re
 import os
+from datetime import datetime
 
 class BBox(TypedDict):
     x: float
@@ -159,3 +160,35 @@ async def test_mark_page_script(page):
     await page.wait_for_timeout(10000)
     
     await page.evaluate("removeBoundingBoxes()")
+
+def write_to_log_file(log_message: str):
+    log_dir = "logs"
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+    
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    log_file_path = os.path.join(log_dir, f"agent_log_{current_date}.txt")
+    
+    with open(log_file_path, "a") as log_file:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_file.write(f"[{timestamp}] {log_message}\n")
+
+async def process_agent_output(output):
+    log_message = ""  # Initialize log_message at the beginning
+
+    if isinstance(output, dict) and 'agent' in output:
+        agent_output = output['agent']
+        if 'prediction' in agent_output:
+            prediction = agent_output['prediction']
+            action = prediction.get('action', 'Unknown action')
+            args = prediction.get('args', [])
+            reply = prediction.get('reply', '')
+
+            log_message = f"Action: {action}"
+            if args:
+                log_message += f"\nArgs: {args}"
+            if reply:
+                log_message += f"\nReply: {reply}"
+    print(log_message)
+    write_to_log_file(log_message)
+    return log_message

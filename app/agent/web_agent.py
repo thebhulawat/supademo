@@ -3,7 +3,7 @@ from playwright.async_api import async_playwright
 from langgraph.graph import END, StateGraph
 from utils import (
     AgentState, annotate,
-    format_descriptions, parse, update_scratchpad
+    format_descriptions, parse, update_scratchpad, process_agent_output
 )
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
@@ -16,6 +16,7 @@ from fastapi.responses import StreamingResponse
 import uvicorn
 import logging
 from contextlib import asynccontextmanager
+
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -64,7 +65,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 # Set up the agent
-llm = ChatOpenAI(model="gpt-4-turbo", max_tokens=4096)
+llm = ChatOpenAI(model="gpt-4o", max_tokens=4096)
 agent = annotate | RunnablePassthrough.assign(
     prediction=format_descriptions | prompt | llm | StrOutputParser() | parse
 )
@@ -100,33 +101,16 @@ graph = graph_builder.compile()
 async def run_agent(page, input_text):
     state = {"page": page, "input": input_text, "scratchpad": []}
     async for event in graph.astream(state):
-        if "prediction" in event:
-            yield event["prediction"]
-        elif "observation" in event:
-            yield event["observation"]
+        output = await process_agent_output(event)
+        if output:
+            yield output
     
 
-async def run_agent_with_input(page, input_text):
-    async for output in run_agent(page, input_text):
-        if isinstance(output, dict) and "action" in output:
-            print(f"Action: {output['action']}")
-            if output.get("args"):
-                print(f"Args: {output['args']}")
-            if output.get("reply"):
-                print(f"Reply: {output['reply']}")
-        else:
-            print(f"Observation: {output}")
-
-async def main():
-    p, browser, page = await initialize_browser()
-    
-    try:
-        input_text = "Show me how to create a new project in Jira"
-        await run_agent_with_input(page, input_text)
-
-    finally:
-        await browser.close()
-        await p.stop()
+async def run_agent(page, input_text):
+    state = {"page": page, "input": input_text, "scratchpad": []}
+    async for event in graph.astream(state):
+        output = await process_agent_output(event)
+        yield output
 
 
 @app.get("/run_agent")
@@ -136,23 +120,22 @@ async def run_agent_endpoint(input_text: str):
         
         async def generate():
             async for output in run_agent(page, input_text):
-                if isinstance(output, dict) and "action" in output:
-                    print(f"Action: {output['action']}\n")
-                    yield f"Action: {output['action']}\n"
-                    if output.get("args"):
-                        print(f"Args: {output['args']}\n")
-                        yield f"Args: {output['args']}\n"
-                    if output.get("reply"):
-                        print(f"Reply: {output['reply']}\n")
-                        yield f"Reply: {output['reply']}\n"
-                else:
-                    yield f"Observation: {output}\n"
+                yield output + "\n"
+
         return StreamingResponse(generate(), media_type="text/plain")
     
     except Exception as e:
         logger.error(f"Error in run_agent_endpoint: {str(e)}")
-        return {"error": str(e)}   
+        return {"error": str(e)}
     
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+    import uvicorn
+    import sys
+    from pathlib import Path
+
+    # Add the project root directory to the Python path
+    project_root = Path(__file__).resolve().parent.parent.parent
+    sys.path.insert(0, str(project_root))
+
+    uvicorn.run("app.agent.web_agent:app", host="0.0.0.0", port=8000, log_level="info", reload=True)
