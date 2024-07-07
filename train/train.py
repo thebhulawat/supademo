@@ -8,7 +8,12 @@ import json
 import time
 from google.api_core.exceptions import FailedPrecondition, ResourceExhausted
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+env_path = os.path.join(script_dir, '../.env.local')
+load_dotenv(env_path)
+
 load_dotenv('../.env.local')
+
 api_key = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=api_key)
 
