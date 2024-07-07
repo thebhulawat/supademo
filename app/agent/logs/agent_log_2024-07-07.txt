@@ -1,0 +1,70 @@
+[2024-07-07 11:10:22] Action: Sample Action
+Args: ['Sample Argument']
+Reply: Sample Reply
+[2024-07-07 11:11:27] Action: Sample Action
+Args: ['Sample Argument']
+Reply: Sample Reply
+[2024-07-07 11:12:07] Action: Sample Action
+Args: ['Sample Argument']
+Reply: Sample Reply naman
+[2024-07-07 11:14:02] Action: Click
+Args: ['46']
+Reply: Now, we will click the "Create issue" button to start the process of creating a new issue.
+[2024-07-07 11:14:02] 
+[2024-07-07 11:14:02] 
+[2024-07-07 11:14:12] Action: Type
+Args: ['46', 'Meet Rahul Ji']
+Reply: Let's start by typing the issue title "Meet Rahul Ji" in the text field.
+[2024-07-07 11:14:13] 
+[2024-07-07 11:14:13] 
+[2024-07-07 11:14:24] Action: Click
+Args: ['50']
+Reply: Now we will click the "Create" button in the "TO DO" column to proceed with creating the new issue.
+[2024-07-07 11:14:24] 
+[2024-07-07 11:14:24] 
+[2024-07-07 11:14:36] Action: Click
+Args: ['9']
+Reply: Now we will click the "Create issue" button so that we can proceed with creating the new issue.
+[2024-07-07 11:14:36] 
+[2024-07-07 11:14:36] 
+[2024-07-07 11:14:49] Action: Click
+Args: ['66']
+Reply: Now we will click the "Create" button to complete the task of creating the issue titled "Meet Rahul Ji".
+[2024-07-07 11:14:49] 
+[2024-07-07 11:14:49] 
+[2024-07-07 11:15:02] Action: Type
+Args: ['66', 'Meet Rahul Ji']
+Reply: Now, let's enter the issue title "Meet Rahul Ji" in the summary field so we can proceed to create the issue.
+[2024-07-07 11:15:02] 
+[2024-07-07 11:15:02] 
+[2024-07-07 11:15:16] Action: Type
+Args: ['69', 'Meet Rahul Ji']
+Reply: Now, we will enter the issue title "Meet Rahul Ji" in the text field for the issue summary. Let's go ahead and type it in.
+[2024-07-07 11:15:17] 
+[2024-07-07 11:15:17] 
+[2024-07-07 11:15:28] Action: Click
+Args: ['50']
+Reply: Now we will click the "Create issue" button so that we can start creating a new issue with the title "Meet Rahul Ji."
+[2024-07-07 11:17:16] Action: Click
+Args: ['50']
+Reply: Now we will click the "Create issue" button so that we can start creating a new issue with the desired title.
+[2024-07-07 11:17:16] 
+[2024-07-07 11:17:16] 
+[2024-07-07 11:17:25] Action: Click
+Args: ['52']
+Reply: Now we will click the "Create" button to proceed with creating a new issue.
+[2024-07-07 11:17:26] 
+[2024-07-07 11:17:26] 
+[2024-07-07 11:17:36] Action: Type
+Args: ['50', 'Meet Modi Ji']
+Reply: Now, we're going to enter the title "Meet Modi Ji" in the text field to create the new issue.
+[2024-07-07 11:17:36] 
+[2024-07-07 11:17:36] 
+[2024-07-07 11:17:47] Action: Click
+Args: ['9']
+Reply: Now we will click the "Create issue" button to start creating a new issue titled "Meet Modi Ji".
+[2024-07-07 11:17:47] 
+[2024-07-07 11:17:47] 
+[2024-07-07 11:17:57] Action: Click
+Args: ['66']
+Reply: Now we will click the "Create" button to finalize and create the issue. This will complete the task.

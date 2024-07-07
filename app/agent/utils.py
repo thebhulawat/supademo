@@ -8,6 +8,15 @@ from langchain_core.messages import SystemMessage
 import re
 import os
 from datetime import datetime
+from deepgram import (
+    DeepgramClient,
+    SpeakOptions,
+)
+from pydub import AudioSegment
+from pydub.playback import play
+
+
+deepgram = DeepgramClient(api_key='ccd39542915e20239233dbb9fb50732cffc5bf3d')
 
 class BBox(TypedDict):
     x: float
@@ -189,6 +198,38 @@ async def process_agent_output(output):
                 log_message += f"\nArgs: {args}"
             if reply:
                 log_message += f"\nReply: {reply}"
+                # Speak aloud the reply 
+                SPEAK_OPTIONS = {"text": reply}
+                filename = "output.wav"
+                options = SpeakOptions(
+                    model="aura-asteria-en",
+                    encoding="linear16",
+                    container="wav"
+                )
+                response = deepgram.speak.v("1").save(filename, SPEAK_OPTIONS, options)
+                print(response.to_json(indent=4))
+                audio = AudioSegment.from_wav(filename)
+                play(audio)
+
     print(log_message)
     write_to_log_file(log_message)
     return log_message
+
+
+# import asyncio
+
+# # Sample input
+# sample_output = {
+#     'agent': {
+#         'prediction': {
+#             'action': 'Sample Action',
+#             'args': ['Sample Argument'],
+#             'reply': 'Sample Reply naman'
+#         }
+#     }
+# }
+
+# # Call the function with the sample input
+# loop = asyncio.get_event_loop()
+# loop.run_until_complete(process_agent_output(sample_output))
+# loop.close()
