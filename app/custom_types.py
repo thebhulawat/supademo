@@ -31,7 +31,7 @@ class ResponseRequiredRequest(BaseModel):
 
 
 CustomLlmRequest = Union[
-    ResponseRequiredRequest | UpdateOnlyRequest | CallDetailsRequest | PingPongRequest
+    ResponseRequiredRequest, UpdateOnlyRequest, CallDetailsRequest, PingPongRequest
 ]
 
 
@@ -58,4 +58,4 @@ class ResponseResponse(BaseModel):
     transfer_number: Optional[str] = None
 
 
-CustomLlmResponse = Union[ConfigResponse | PingPongResponse | ResponseResponse]
+CustomLlmResponse = Union[ConfigResponse, PingPongResponse, ResponseResponse]

@@ -1,5 +1,17 @@
 # supademo
 kill the demoGod 
 
-Command to bring up the server - python -m uvicorn app.server:app --reload --port=8080
+Command to bring up the server - 
+
+```bash
+poetry install 
+```
+
+```bash
+ngrok http 8080
+```
+
+```bash 
+python -m uvicorn app.server:app --reload --port=8080
+```
 

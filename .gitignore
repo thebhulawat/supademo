@@ -3,3 +3,8 @@
 ~/Library/*
 __pycache__
 .conda
+dist/
+node_modules/
+# .gitignore
+keys.ts
+.DS_Store
