@@ -29,8 +29,6 @@ retell-sdk = "3.11.0"
 fastapi = "0.100.1"
 uvicorn = "0.21.1"
 
-
-
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
 black = "^24.4.2"
