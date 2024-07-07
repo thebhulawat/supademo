@@ -1946,13 +1946,13 @@ numpy = "*"
 
 [[package]]
 name = "litellm"
-version = "1.41.8"
+version = "1.41.11"
 description = "Library to easily interface with LLM API providers"
 optional = false
 python-versions = "!=2.7.*,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,!=3.7.*,>=3.8"
 files = [
-    {file = "litellm-1.41.8-py3-none-any.whl", hash = "sha256:57e2968f71445991a403cb029a011b7f454bee1d574881828e52f088092061df"},
-    {file = "litellm-1.41.8.tar.gz", hash = "sha256:48914b57ca6d71253f1e9b8d4bde306b2d0dfa506339432a9ba676f896b5ba24"},
+    {file = "litellm-1.41.11-py3-none-any.whl", hash = "sha256:1b13bf8893f5c9c5e35213a7094848e2b3933f665002016246c4058d2189c99c"},
+    {file = "litellm-1.41.11.tar.gz", hash = "sha256:649ea04234d8d4d2a4cd8f4ea915d991f5fbb8ce98e19719da2af6c7ab8848a9"},
 ]
 
 [package.dependencies]
@@ -1969,7 +1969,7 @@ tiktoken = ">=0.7.0"
 tokenizers = "*"
 
 [package.extras]
-extra-proxy = ["azure-identity (>=1.15.0,<2.0.0)", "azure-keyvault-secrets (>=4.8.0,<5.0.0)", "google-cloud-kms (>=2.21.3,<3.0.0)", "prisma (==0.11.0)", "resend (>=0.8.0,<0.9.0)"]
+extra-proxy = ["azure-identity (>=1.15.0,<2.0.0)", "azure-keyvault-secrets (>=4.8.0,<5.0.0)", "google-cloud-kms (>=2.21.3,<3.0.0)", "prisma (==0.11.0)", "pynacl (>=1.5.0,<2.0.0)", "resend (>=0.8.0,<0.9.0)"]
 proxy = ["PyJWT (>=2.8.0,<3.0.0)", "apscheduler (>=3.10.4,<4.0.0)", "backoff", "cryptography (>=42.0.5,<43.0.0)", "fastapi (>=0.111.0,<0.112.0)", "fastapi-sso (>=0.10.0,<0.11.0)", "gunicorn (>=22.0.0,<23.0.0)", "orjson (>=3.9.7,<4.0.0)", "python-multipart (>=0.0.9,<0.0.10)", "pyyaml (>=6.0.1,<7.0.0)", "rq", "uvicorn (>=0.22.0,<0.23.0)"]
 
 [[package]]
@@ -3893,13 +3893,13 @@ use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "retell-sdk"
-version = "3.11.0"
+version = "3.20.0"
 description = "The official Python library for the retell API"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "retell_sdk-3.11.0-py3-none-any.whl", hash = "sha256:fdab04ba5a38017e4a32d91376e81ed5783f7892f27299c04c35065da03ec19c"},
-    {file = "retell_sdk-3.11.0.tar.gz", hash = "sha256:1577abf0b4b8b046866ec6cf86b3a235272150541cc6113544d111302e3aa73a"},
+    {file = "retell_sdk-3.20.0-py3-none-any.whl", hash = "sha256:536eb5f178133fccf3df39d168bb39a4cb40b2e001e5b165aedadc6a90796b11"},
+    {file = "retell_sdk-3.20.0.tar.gz", hash = "sha256:038ade8b2fd95634d5001a6d47ec93e9814a4e763b3b188eae03e07758e83e39"},
 ]
 
 [package.dependencies]
@@ -4764,4 +4764,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "993fe19eb78c072dbcffd3e93cd90954c2595eada84f6c110e10a38a945075b5"
+content-hash = "f847090e2fcef16cf9546459928e637ce408c7062e0ec6a965ec6b039fb9f959"

@@ -25,9 +25,9 @@ langchain-openai = "^0.1.14"
 langchainhub = "^0.1.20"
 libdeeplake = "^0.0.134"
 hub = "^3.0.1"
-retell-sdk = "3.11.0"
 fastapi = "0.100.1"
 uvicorn = "0.21.1"
+retell-sdk = "^3.20.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"

@@ -14,7 +14,7 @@ from .custom_types import (
 from .llm import LlmClient  
 
 
-load_dotenv('../.env.local')
+load_dotenv()
 app = FastAPI()
 
 app.add_middleware(
