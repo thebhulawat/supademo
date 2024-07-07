@@ -7,11 +7,11 @@ from fastapi.responses import JSONResponse, PlainTextResponse
 from fastapi.middleware.cors import CORSMiddleware
 from concurrent.futures import TimeoutError as ConnectionTimeoutError
 from retell import Retell
-from .custom_types import (
+from .utils.custom_types import (
     ConfigResponse,
     ResponseRequiredRequest,
 )
-from .llm import LlmClient  
+from .agent.voice_agent import LlmClient  
 
 
 load_dotenv()

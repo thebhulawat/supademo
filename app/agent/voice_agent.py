@@ -2,7 +2,7 @@ from openai import AsyncOpenAI
 import os
 import asyncio
 from typing import List
-from .custom_types import (
+from ..utils.custom_types import (
     ResponseRequiredRequest,
     ResponseResponse,
     Utterance,
