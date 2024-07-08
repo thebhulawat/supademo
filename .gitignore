@@ -8,3 +8,4 @@ node_modules/
 # .gitignore
 keys.ts
 .DS_Store
+logs/

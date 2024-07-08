@@ -28,6 +28,9 @@ hub = "^3.0.1"
 fastapi = "0.100.1"
 uvicorn = "0.21.1"
 retell-sdk = "^3.20.0"
+fastapi-cors = "^0.0.6"
+opencv-python = "^4.10.0.84"
+aiortc = "^1.9.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"

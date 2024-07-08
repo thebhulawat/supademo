@@ -1,5 +1,0 @@
-Hello, this is a dummy file.
-It contains several lines of text.
-Each line is separated by a newline character.
-This is the fourth line.
-And this is the final line.
